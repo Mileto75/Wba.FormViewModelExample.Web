@@ -16,13 +16,16 @@ namespace Wba.FormViewModelExample.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Register
             (UsersRegisterViewModel usersRegisterViewModel)
         {
             //perform validation
-            //store user in Db
-            //redirect to ...
-            return RedirectToAction("RegistrationSuccess");
+            if (ModelState.IsValid)
+                //redirect to ...
+                return RedirectToAction("RegistrationSuccess");
+
+            return View(usersRegisterViewModel);
         }
 
         [HttpGet]
