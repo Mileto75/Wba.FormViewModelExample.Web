@@ -21,6 +21,20 @@
         <label asp-for="RepeatPassword"></label>
         <input asp-for="RepeatPassword" class="form-control">
     </div>
+    <div class="form-group">
+        <label asp-for="CountryId"></label>
+        <select class="form-control" asp-for="CountryId" asp-items="@Model.Countries"></select>
+    </div>
+    <div class="form-control">
+        @for(int i=0;i<Model.Regions.Count;i++)
+        {
+            <input asp-for="Regions[i].IsSelected" />
+            <label asp-for="Regions[i].Region">
+               @Model.Regions[i].Region
+            </label>
+            <input type="hidden" asp-for="Regions[i].RegionId" value="@Model.Regions[i].RegionId" />
+        }
+    </div>
     <button type="submit" class="btn btn-info">Login</button>
 </form>
 

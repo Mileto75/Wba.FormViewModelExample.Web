@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Wba.FormViewModelExample.Web.Models;
 using Wba.FormViewModelExample.Web.ViewModels;
 
 namespace Wba.FormViewModelExample.Web.Controllers
@@ -12,7 +14,20 @@ namespace Wba.FormViewModelExample.Web.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            UsersRegisterViewModel usersRegisterViewModel = new UsersRegisterViewModel();
+            usersRegisterViewModel.Countries = new List<SelectListItem>();
+            usersRegisterViewModel.Countries.Add(new SelectListItem { Text = "België", Value = "1" });
+            usersRegisterViewModel.Countries.Add(new SelectListItem { Text = "Nederland", Value = "2" });
+            usersRegisterViewModel.Countries.Add(new SelectListItem { Text = "Duitsland", Value = "3" });
+            usersRegisterViewModel.Countries.Add(new SelectListItem { Text = "Italië", Value = "4" });
+
+            usersRegisterViewModel.Regions = new List<RegionCheckboxModel>
+            {
+                new RegionCheckboxModel{Region="W-vl",RegionId=1,IsSelected=true },
+                new RegionCheckboxModel{Region="O-vl",RegionId=2,IsSelected=true },
+                new RegionCheckboxModel{Region="Ant",RegionId=3,IsSelected=true },
+            };
+            return View(usersRegisterViewModel);
         }
 
         [HttpPost]

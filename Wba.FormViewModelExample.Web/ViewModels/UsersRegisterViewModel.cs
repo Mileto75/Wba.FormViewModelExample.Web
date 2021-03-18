@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Wba.FormViewModelExample.Web.Models;
 
 namespace Wba.FormViewModelExample.Web.ViewModels
 {
@@ -21,5 +23,10 @@ namespace Wba.FormViewModelExample.Web.ViewModels
         [DataType(DataType.Password)]
         [Display(Name = "Herhaal uw paswoord:")]
         public string RepeatPassword { get; set; }
+        public List<SelectListItem> Countries { get; set; }
+        [Display(Name="Land:")]
+        public int CountryId { get; set; }
+
+        public List<RegionCheckboxModel> Regions { get; set; }
     }
 }
