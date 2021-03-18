@@ -10,9 +10,11 @@ namespace Wba.FormViewModelExample.Web.ViewModels
     {
         [Display(Name = "Email:")]
         [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage ="Email mag niet leeg zijn!")]
         public string Email { get; set; }
         [DataType(DataType.Password)]
         [Display(Name = "Paswoord:")]
+        [Required(ErrorMessage = "Wachtwoord mag niet leeg zijn!")]
         public string Password { get; set; }
         [Display(Name = "Onthoud mij")]
         public bool RememberMe { get; set; }
